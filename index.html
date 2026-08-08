@@ -3,65 +3,670 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title<MA CAFE /title>
+
+    <meta name="description" content="Welcome to MA CAFE - Fresh food, delicious coffee and a wonderful dining experience.">
+    <meta name="keywords" content="cafe, restaurant, coffee, food, dining">
+    <meta name="author" content="MA CAFE">
+
+    <title>MA CAFE |   Cafe</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<header>
-    h1<H1 MA CAFE
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="container nav-container">
+
+        <a href="#home" class="logo">
+            <span>☕</span> MA CAFE
+        </a>
+
+        <button class="menu-toggle" id="menuToggle">
+            ☰
+        </button>
+
+        <nav class="navbar" id="navbar">
+
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reservation">Reservation</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+    </div>
+
 </header>
 
+
+<!-- ================= HERO ================= -->
+
 <section id="home" class="hero">
-    <h2>Welcome to MA CAFE </h2>
-    <p>Fresh Food • Delicious Food • Cozy Atmosphere</p>
-    <button onclick="orderNow()">Order Now</button>
-</section>
 
-<section id="menu">
-    <h2>Our Menu</h2>
+    <div class="hero-overlay"></div>
 
-    <div class="card">
-        <h3> 🍕 Pizza </h3>
-        <p>₹130.00</p>
+    <div class="hero-content">
+
+        <p class="small-title">WELCOME TO</p>
+
+        <h1>MA CAFE</h1>
+
+        <p>
+            Fresh Coffee • Delicious Food • Beautiful Moments
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#menu" class="btn primary-btn">
+                View Menu
+            </a>
+
+            <a href="#reservation" class="btn secondary-btn">
+                Book a Table
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>🍔Burger </h3>
-        <p>₹150.00</p>
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features">
+
+    <div class="container features-grid">
+
+        <div class="feature">
+            <div class="feature-icon">🧋</div>
+            <h3>Cold Coffee</h3>
+            <p>Freshly prepared coffee every day.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">🍕</div>
+            <h3>Delicious Food</h3>
+            <p>Quality ingredients and great taste.</p>
+        </div>
+
+        <div class="feature">
+            <div class="feature-icon">❤️</div>
+            <h3>Lovely Atmosphere</h3>
+            <p>A comfortable place for everyone.</p>
+        </div>
+
     </div>
 
-    <div class="card">
-        <h3>🥪 Sandwich</h3>
-        <p>₹100.00</p>
+</section>
+
+
+<!-- ================= MENU ================= -->
+
+<section id="menu" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="subtitle">OUR MENU</p>
+
+            <h2>Popular Dishes</h2>
+
+            <p>
+                Discover some of our customer's favorite dishes.
+            </p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+            <!-- Item 1 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh Coffee"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Cold Coffee</h3>
+
+                        <span>₹199</span>
+
+                    </div>
+
+                    <p>
+                        Rich espresso with steamed milk and creamy foam.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Item 2 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
+                    alt="Pizza"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Italian Pizza</h3>
+
+                        <span>₹149</span>
+
+                    </div>
+
+                    <p>
+                        Crispy pizza topped with fresh cheese and vegetables.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Item 3 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=80"
+                    alt="Fresh Food"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Special Salad</h3>
+
+                        <span>₹99</span>
+
+                    </div>
+
+                    <p>
+                        Fresh vegetables with our special homemade dressing.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Item 4 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80"
+                    alt="Dessert"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Chocolate Dessert</h3>
+
+                        <span>₹199</span>
+
+                    </div>
+
+                    <p>
+                        Delicious chocolate dessert for a perfect ending.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Item 5 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
+                    alt="Pasta"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Creamy Pasta</h3>
+
+                        <span>₹99</span>
+
+                    </div>
+
+                    <p>
+                        Creamy pasta prepared with fresh herbs and cheese.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Item 6 -->
+
+            <div class="food-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"
+                    alt="Burger"
+                >
+
+                <div class="food-info">
+
+                    <div class="food-title">
+
+                        <h3>Classic Burger</h3>
+
+                        <span>₹199</span>
+
+                    </div>
+
+                    <p>
+                        Juicy burger served with fresh vegetables and fries.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
+
 </section>
 
-<section id="about">
-    <h2>About Us</h2>
-    <p>We serve fresh coffee and delicious meals every day.</p>
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="about section">
+
+    <div class="container about-grid">
+
+        <div class="about-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=80"
+                alt="Cafe interior"
+            >
+
+        </div>
+
+
+        <div class="about-content">
+
+            <p class="subtitle">ABOUT US</p>
+
+            <h2>A Place Made With Love</h2>
+
+            <p>
+                Welcome to MA CAFE. We believe that great food,
+                fresh coffee and a friendly atmosphere can make every
+                day a little better.
+            </p>
+
+            <p>
+                Our team prepares every dish using carefully selected
+                ingredients. Whether you are visiting for breakfast,
+                lunch, dinner or simply a cup of coffee, we are happy
+                to welcome you.
+            </p>
+
+            <a href="#contact" class="btn primary-btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
 </section>
 
-<section id="contact">
-    <h2>Contact</h2>
 
-    <form>
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message"></textarea>
-        <button type="submit">Send</button>
-    </form>
+<!-- ================= GALLERY ================= -->
+
+<section id="gallery" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="subtitle">OUR GALLERY</p>
+
+            <h2>Inside MA Cafe</h2>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80" alt="Cafe">
+            
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Coffee">
+            
+            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" alt="Restaurant food">
+            
+            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80" alt="Restaurant">
+            
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Dining">
+            
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Cafe interior">
+
+        </div>
+
+    </div>
+
 </section>
 
-<footer>
-    <p>© 2026 MA CAFE </p>
+
+<!-- ================= RESERVATION ================= -->
+
+<section id="reservation" class="reservation section">
+
+    <div class="container">
+
+        <div class="section-heading light">
+
+            <p class="subtitle">RESERVATION</p>
+
+            <h2>Book Your Table</h2>
+
+            <p>
+                Reserve your table and enjoy a wonderful dining experience.
+            </p>
+
+        </div>
+
+
+        <form id="reservationForm" class="reservation-form">
+
+            <div class="form-group">
+
+                <label for="name">Your Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="date">Date</label>
+
+                <input
+                    type="date"
+                    id="date"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="time">Time</label>
+
+                <input
+                    type="time"
+                    id="time"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="guests">Guests</label>
+
+                <select id="guests" required>
+
+                    <option value="">Select guests</option>
+                    <option>1 Person</option>
+                    <option>2 People</option>
+                    <option>3 People</option>
+                    <option>4 People</option>
+                    <option>5 People</option>
+                    <option>6+ People</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label for="message">Special Request</label>
+
+                <textarea
+                    id="message"
+                    placeholder="Any special request?"
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit" class="btn primary-btn full-btn">
+                Reserve Table
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOURS ================= -->
+
+<section class="hours section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <p class="subtitle">OPENING HOURS</p>
+
+            <h2>Come Visit Us</h2>
+
+        </div>
+
+
+        <div class="hours-box">
+
+            <div>
+                <span>Monday - Friday</span>
+                <strong>11:00 AM - 11:00 PM</strong>
+            </div>
+
+            <div>
+                <span>Saturday</span>
+                <strong>11:00 AM - 11:00 PM</strong>
+            </div>
+
+            <div>
+                <span>Sunday</span>
+                <strong>11:00 AM - 10:00 PM</strong>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact" class="contact section">
+
+    <div class="container contact-grid">
+
+        <div class="contact-info">
+
+            <p class="subtitle">CONTACT US</p>
+
+            <h2>We'd Love To Hear From You</h2>
+
+            <p>
+                Have a question, want to make a reservation,
+                or simply want to say hello? Contact us.
+            </p>
+
+
+            <div class="contact-item">
+
+                <span>📍</span>
+
+                <div>
+                    <h4>Address</h4>
+                    <p>Your Restaurant Address, Your City</p>
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>📞</span>
+
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 9175762613</p>
+                </div>
+
+            </div>
+
+
+            <div class="contact-item">
+
+                <span>✉️</span>
+
+                <div>
+                    <h4>Email</h4>
+                    <p>hello@MA cafe.com</p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="map-container">
+
+            <iframe
+                src="https://www.google.com/maps?q=India&output=embed"
+                loading="lazy"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHATSAPP ================= -->
+
+<a
+    href="https://wa.me/9175762613?text=Hello%20Cafe%20Delight%2C%20I%20would%20like%20to%20make%20a%20reservation."
+    class="whatsapp"
+    target="_blank"
+    aria-label="Contact us on WhatsApp">
+
+    💬
+
+</a>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <h3>♨️ MA CAFE</h3>
+
+            <p>
+                Fresh food. Great coffee. Happy moments.
+            </p>
+
+        </div>
+
+
+        <div class="social-links">
+
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+            <a href="#" aria-label="YouTube">YouTube</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="copyright">
+
+        <p>
+            © 2026 Cafe Delight. All Rights Reserved.
+        </p>
+
+    </div>
+
 </footer>
+
 
 <script src="script.js"></script>
 
