@@ -1,67 +1,672 @@
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header{
-    background:#6b3e26;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    padding:15px 30px;
+html {
+    scroll-behavior: smooth;
 }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:10px;
+body {
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    background: #fff;
+    line-height: 1.6;
 }
 
-.hero{
-    text-align:center;
-    padding:80px;
-    background:#d9a066;
-    color:white;
+img {
+    max-width: 100%;
+    display: block;
 }
 
-button{
-    padding:10px 20px;
-    background:#6b3e26;
-    color:white;
-    border:none;
-    cursor:pointer;
+a {
+    text-decoration: none;
 }
 
-#menu{
-    padding:40px;
-    text-align:center;
+.container {
+    width: 90%;
+    max-width: 1150px;
+    margin: auto;
 }
 
-.card{
-    display:inline-block;
-    background:white;
-    width:220px;
-    padding:20px;
-    margin:15px;
-    border-radius:10px;
-    box-shadow:0 2px 8px gray;
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(20, 15, 12, 0.96);
+    z-index: 1000;
+    padding: 15px 0;
 }
 
-form{
-    width:300px;
-    margin:auto;
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-input,textarea{
-    width:100%;
-    padding:10px;
-    margin:10px 0;
+.logo {
+    color: #fff;
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    font-weight: 700;
 }
 
-footer{
-    text-align:center;
-    background:#6b3e26;
-    color:white;
-    padding:15px;
+.logo span {
+    margin-right: 5px;
 }
+
+.navbar {
+    display: flex;
+    gap: 25px;
+}
+
+.navbar a {
+    color: #fff;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #d9a441;
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    position: relative;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1800&q=85");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.small-title {
+    letter-spacing: 5px;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(50px, 9vw, 90px);
+    margin-bottom: 15px;
+}
+
+.hero-content > p:not(.small-title) {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: 0.3s;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.primary-btn {
+    background: #c58b3a;
+    color: white;
+}
+
+.primary-btn:hover {
+    background: #a86f25;
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    border-color: white;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background: white;
+    color: #333;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    padding: 50px 0;
+    background: #f7f3ed;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    text-align: center;
+}
+
+.feature {
+    padding: 20px;
+}
+
+.feature-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.feature h3 {
+    margin-bottom: 5px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    padding: 90px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 50px;
+}
+
+.subtitle {
+    color: #c58b3a;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.section-heading h2,
+.about-content h2,
+.contact-info h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.food-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.food-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.14);
+}
+
+.food-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.food-info {
+    padding: 20px;
+}
+
+.food-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.food-title h3 {
+    font-family: "Playfair Display", serif;
+}
+
+.food-title span {
+    color: #c58b3a;
+    font-weight: 700;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    background: #f7f3ed;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.about-content p {
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   RESERVATION
+========================= */
+
+.reservation {
+    background:
+        linear-gradient(rgba(25, 18, 13, 0.9), rgba(25, 18, 13, 0.9)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=80");
+
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.light {
+    color: white;
+}
+
+.reservation-form {
+    max-width: 850px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    outline: none;
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.full-btn {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+
+/* =========================
+   HOURS
+========================= */
+
+.hours {
+    background: #f7f3ed;
+}
+
+.hours-box {
+    max-width: 700px;
+    margin: auto;
+    display: grid;
+    gap: 15px;
+}
+
+.hours-box div {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 20px;
+    background: white;
+    border-radius: 6px;
+}
+
+.hours-box strong {
+    color: #c58b3a;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.contact-info > p {
+    margin-bottom: 25px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.contact-item > span {
+    font-size: 25px;
+}
+
+.contact-item h4 {
+    margin-bottom: 3px;
+}
+
+.contact-item p {
+    color: #666;
+}
+
+.map-container {
+    min-height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: 0;
+}
+
+
+/* =========================
+   WHATSAPP
+========================= */
+
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 58px;
+    height: 58px;
+
+    background: #25D366;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    z-index: 999;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+
+    transition: 0.3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #17120f;
+    color: white;
+    padding-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.footer p {
+    color: #ccc;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #ccc;
+}
+
+.social-links a:hover {
+    color: #c58b3a;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding: 20px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        background: #17120f;
+
+        display: none;
+        flex-direction: column;
+
+        padding: 20px;
+        gap: 18px;
+    }
+
+    .navbar.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .features-grid,
+    .menu-grid,
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation-form {
+        grid-template-columns: 1fr;
+    }
+
+    .full {
+        grid-column: auto;
+    }
+
+    .full-btn {
+        grid-column: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .section {
+        padding: 65px 0;
+    }
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+    .hero-content > p:not(.small-title) {
+        font-size: 15px;
+    }
+
+    .section-heading h2,
+    .about-content h2,
+    .contact-info h2 {
+        font-size: 34px;
+    }
+
+    .features-grid,
+    .menu-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card img {
+        height: 230px;
+    }
+
+    .about-image img {
+        height: 350px;
+    }
+
+    .gallery-grid img {
+        height: 230px;
+    }
+
+    .hours-box div {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    }
