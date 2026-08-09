@@ -1,675 +1,1178 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Welcome to MA CAFE - Fresh food, delicious coffee and a wonderful dining experience.">
-    <meta name="keywords" content="cafe, restaurant, coffee, food, dining">
-    <meta name="author" content="MA CAFE">
+<title>MA Cafe Restaurant | Online Ordering</title>
 
-    <title>MA CAFE |   Cafe</title>
+<meta name="description"
+content="Order delicious food online from MA Cafe Restaurant.">
 
-    <link rel="stylesheet" href="style.css">
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+body {
+    font-family: Arial, sans-serif;
+    background: #faf8f4;
+    color: #29231d;
+    line-height: 1.6;
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+header {
+    background: #241b15;
+    color: white;
+    padding: 18px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.cart-button {
+    border: none;
+    background: #d49a45;
+    color: white;
+    padding: 11px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.hero {
+    background: linear-gradient(
+        rgba(30,20,10,.72),
+        rgba(30,20,10,.72)
+    ),
+    url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80");
+
+    background-size: cover;
+    background-position: center;
+    min-height: 360px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 8vw, 68px);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 19px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 34px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.menu-content {
+    padding: 18px;
+}
+
+.menu-content h3 {
+    margin-bottom: 7px;
+}
+
+.menu-content p {
+    color: #6c6259;
+    min-height: 50px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.add-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #d49a45;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    opacity: .9;
+}
+
+.cart-section {
+    display: none;
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    margin-top: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qty-controls button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.remove-button {
+    color: #b42318;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.total-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f5efe6;
+    border-radius: 10px;
+}
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.grand-total {
+    font-size: 23px;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 12px;
+}
+
+.form-group {
+    margin-top: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.payment-box {
+    margin-top: 25px;
+    padding: 20px;
+    background: #f8f4ed;
+    border-radius: 10px;
+}
+
+.payment-box h3 {
+    margin-bottom: 10px;
+}
+
+.upi-button,
+.whatsapp-button,
+.confirm-button {
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.upi-button {
+    background: #673ab7;
+    color: white;
+}
+
+.whatsapp-button {
+    background: #25d366;
+    color: white;
+}
+
+.confirm-button {
+    background: #241b15;
+    color: white;
+}
+
+.order-confirmation {
+    display: none;
+    text-align: center;
+    background: white;
+    padding: 35px 20px;
+    border-radius: 14px;
+    margin-top: 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
+}
+
+.success-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.order-number {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+footer {
+    background: #241b15;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+
+@media(max-width:600px) {
+
+    .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero {
+        min-height: 300px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<header>
+    <div class="navbar">
 
-<header class="header">
+        <div class="logo">
+            ☕ MA Cafe Restaurant
+        </div>
 
-    <div class="container nav-container">
+        <button
+            class="cart-button"
+            onclick="showCart()">
 
-        <a href="#home" class="logo">
-            <span>☕</span> MA CAFE
-        </a>
+            🛒 Cart
+            (<span id="cartCount">0</span>)
 
-        <button class="menu-toggle" id="menuToggle">
-            ☰
         </button>
 
-        <nav class="navbar" id="navbar">
-
-            <a href="#home">Home</a>
-            <a href="#menu">Menu</a>
-            <a href="#about">About</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#reservation">Reservation</a>
-            <a href="#contact">Contact</a>
-
-        </nav>
-
     </div>
-
 </header>
 
 
-<!-- ================= HERO ================= -->
+<section class="hero">
 
-<section id="home" class="hero">
+    <div>
 
-    <div class="hero-overlay"></div>
-
-    <div class="hero-content">
-
-        <p class="small-title">WELCOME TO</p>
-
-        <h1>MA CAFE</h1>
+        <h1>MA Cafe Restaurant</h1>
 
         <p>
-            Fresh Coffee • Delicious Food • Beautiful Moments
+            Delicious food • Fresh ingredients • Happy customers
         </p>
 
-        <div class="hero-buttons">
-
-            <a href="#menu" class="btn primary-btn">
-                View Menu
-            </a>
-
-            <a href="#reservation" class="btn secondary-btn">
-                Book a Table
-            </a>
-
-        </div>
-
     </div>
 
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+<main>
 
-<section class="features">
+<section class="container">
 
-    <div class="container features-grid">
+    <div class="section-title">
 
-        <div class="feature">
-            <div class="feature-icon">🧋</div>
-            <h3>Cold Coffee</h3>
-            <p>Freshly prepared coffee every day.</p>
-        </div>
+        <h2>Our Menu</h2>
 
-        <div class="feature">
-            <div class="feature-icon">🍕</div>
-            <h3>Delicious Food</h3>
-            <p>Quality ingredients and great taste.</p>
-        </div>
-
-        <div class="feature">
-            <div class="feature-icon">❤️</div>
-            <h3>Lovely Atmosphere</h3>
-            <p>A comfortable place for everyone.</p>
-        </div>
+        <p>
+            Choose your favourite dishes
+        </p>
 
     </div>
 
-</section>
+
+    <div class="menu-grid" id="menuGrid"></div>
 
 
-<!-- ================= MENU ================= -->
+    <div
+        id="cartSection"
+        class="cart-section">
 
-<section id="menu" class="section">
+        <h2>Your Cart</h2>
 
-    <div class="container">
+        <div id="cartItems"></div>
 
-        <div class="section-heading">
 
-            <p class="subtitle">OUR MENU</p>
+        <div class="total-box">
 
-            <h2>Popular Dishes</h2>
+            <div class="total-line">
+
+                <span>Subtotal</span>
+
+                <strong>
+                    ₹<span id="subtotal">0.00</span>
+                </strong>
+
+            </div>
+
+
+            <div class="total-line">
+
+                <span>Delivery</span>
+
+                <strong>
+                    ₹<span id="delivery">0.00</span>
+                </strong>
+
+            </div>
+
+
+            <div class="total-line grand-total">
+
+                <span>Total</span>
+
+                <strong>
+                    ₹<span id="grandTotal">0.00</span>
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <h2 style="margin-top:30px;">
+            Customer Details
+        </h2>
+
+
+        <div class="form-group">
+
+            <label>
+                Full Name
+            </label>
+
+            <input
+                id="customerName"
+                type="text"
+                placeholder="Enter your name">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Mobile Number
+            </label>
+
+            <input
+                id="customerPhone"
+                type="tel"
+                placeholder="10-digit mobile number">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Order Type
+            </label>
+
+            <select id="orderType">
+
+                <option value="Delivery">
+                    Delivery
+                </option>
+
+                <option value="Pickup">
+                    Pickup
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Address
+            </label>
+
+            <textarea
+                id="customerAddress"
+                placeholder="Enter delivery address"></textarea>
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Special Instructions
+            </label>
+
+            <textarea
+                id="instructions"
+                placeholder="Example: Less spicy"></textarea>
+
+        </div>
+
+
+        <div class="payment-box">
+
+            <h3>
+                💳 Payment
+            </h3>
 
             <p>
-                Discover some of our customer's favorite dishes.
+                Choose UPI payment or pay as instructed
+                by the restaurant.
             </p>
 
-        </div>
 
+            <button
+                class="upi-button"
+                onclick="payWithUPI()">
 
-        <div class="menu-grid">
+                💳 Pay ₹<span id="upiAmount">
+                    0.00
+                </span> with UPI
 
-            <!-- Item 1 -->
-
-            <div class="food-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80"
-                    alt="Fresh Coffee"
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Cold Coffee</h3>
-
-                        <span>₹199</span>
-
-                    </div>
-
-                    <p>
-                        Rich espresso with steamed milk and creamy foam.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Item 2 -->
-
-            <div class="food-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=800&q=80"
-                    alt="Pizza"
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Italian Pizza</h3>
-
-                        <span>₹149</span>
-
-                    </div>
-
-                    <p>
-                        Crispy pizza topped with fresh cheese and vegetables.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Item 3 -->
-
-            <div class="food-card">
-
-                <img
-                    <img src="https://assets.bonappetit.com/photos/57ad453f53e63daf11a4dd94/4%3A3/w_892%2Ch_669%2Cc_limit/dark-chocolate-waffles.jpg" alt="Chocolate Waffle with Maple Syrup and Butter">
-                    
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Waffle Maple & Butter </h3>
-
-                        <span>₹150</span>
-
-                    </div>
-
-                    <p>
-                        Fresh  with our special homemade dressing.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Item 4 -->
-
-            <div class="food-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80"
-                    alt="Dessert"
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Chocolate Dessert</h3>
-
-                        <span>₹199</span>
-
-                    </div>
-
-                    <p>
-                        Delicious chocolate dessert for a perfect ending.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Item 5 -->
-
-            <div class="food-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80"
-                    alt="Pasta"
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Creamy Pasta</h3>
-
-                        <span>₹99</span>
-
-                    </div>
-
-                    <p>
-                        Creamy pasta prepared with fresh herbs and cheese.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Item 6 -->
-
-            <div class="food-card">
-
-                <img
-                    src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=80"
-                    alt="Burger"
-                >
-
-                <div class="food-info">
-
-                    <div class="food-title">
-
-                        <h3>Classic Burger</h3>
-
-                        <span>₹199</span>
-
-                    </div>
-
-                    <p>
-                        Juicy burger served with fresh vegetables and fries.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= ABOUT ================= -->
-
-<section id="about" class="about section">
-
-    <div class="container about-grid">
-
-        <div class="about-image">
-
-            <img
-                src="https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1000&q=80"
-                alt="Cafe interior"
-            >
-
-        </div>
-
-
-        <div class="about-content">
-
-            <p class="subtitle">ABOUT US</p>
-
-            <h2>A Place Made With Love</h2>
-
-            <p>
-                Welcome to MA CAFE. We believe that great food,
-                fresh coffee and a friendly atmosphere can make every
-                day a little better.
-            </p>
-
-            <p>
-                Our team prepares every dish using carefully selected
-                ingredients. Whether you are visiting for breakfast,
-                lunch, dinner or simply a cup of coffee, we are happy
-                to welcome you.
-            </p>
-
-            <a href="#contact" class="btn primary-btn">
-                Contact Us
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= GALLERY ================= -->
-
-<section id="gallery" class="section">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <p class="subtitle">OUR GALLERY</p>
-
-            <h2>Inside MA Cafe</h2>
-
-        </div>
-
-
-        <div class="gallery-grid">
-
-            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80" alt="Cafe">
-            
-            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80" alt="Coffee">
-            
-            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80" alt="Restaurant food">
-            
-            <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=900&q=80" alt="Restaurant">
-            
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Dining">
-            
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Cafe interior">
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= RESERVATION ================= -->
-
-<section id="reservation" class="reservation section">
-
-    <div class="container">
-
-        <div class="section-heading light">
-
-            <p class="subtitle">RESERVATION</p>
-
-            <h2>Book Your Table</h2>
-
-            <p>
-                Reserve your table and enjoy a wonderful dining experience.
-            </p>
-
-        </div>
-
-
-        <form id="reservationForm" class="reservation-form">
-
-            <div class="form-group">
-
-                <label for="name">Your Name</label>
-
-                <input
-                    type="text"
-                    id="name"
-                    placeholder="Enter your name"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="phone">Phone Number</label>
-
-                <input
-                    type="tel"
-                    id="phone"
-                    placeholder="Enter your phone number"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="date">Date</label>
-
-                <input
-                    type="date"
-                    id="date"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="time">Time</label>
-
-                <input
-                    type="time"
-                    id="time"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="guests">Guests</label>
-
-                <select id="guests" required>
-
-                    <option value="">Select guests</option>
-                    <option>1 Person</option>
-                    <option>2 People</option>
-                    <option>3 People</option>
-                    <option>4 People</option>
-                    <option>5 People</option>
-                    <option>6+ People</option>
-
-                </select>
-
-            </div>
-
-
-            <div class="form-group full">
-
-                <label for="message">Special Request</label>
-
-                <textarea
-                    id="message"
-                    placeholder="Any special request?"
-                ></textarea>
-
-            </div>
-
-
-            <button type="submit" class="btn primary-btn full-btn">
-                Reserve Table
             </button>
 
-        </form>
+
+            <button
+                class="whatsapp-button"
+                onclick="sendWhatsAppOrder()">
+
+                📱 Send Order on WhatsApp
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="confirmation"
+        class="order-confirmation">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <h2>
+            Order Received!
+        </h2>
+
+        <div class="order-number">
+
+            Order #
+            <span id=""></span>
+
+        </div>
+
+        <p id="confirmationText"></p>
+
+        <button
+            class="confirm-button"
+            onclick="newOrder()">
+
+            🍽️ Start New Order
+
+        </button>
 
     </div>
 
 </section>
 
+</main>
 
-<!-- ================= HOURS ================= -->
 
-<section class="hours section">
+<footer>
 
-    <div class="container">
+    <h3>
+        ☕ MA Cafe Restaurant
+    </h3>
 
-        <div class="section-heading">
-
-            <p class="subtitle">OPENING HOURS</p>
-
-            <h2>Come Visit Us</h2>
-
-        </div>
-
-
-        <div class="hours-box">
-
-            <div>
-                <span>Monday - Friday</span>
-                <strong>11:00 AM - 11:00 PM</strong>
-            </div>
-
-            <div>
-                <span>Saturday</span>
-                <strong>11:00 AM - 11:00 PM</strong>
-            </div>
-
-            <div>
-                <span>Sunday</span>
-                <strong>11:00 AM - 10:00 PM</strong>
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= CONTACT ================= -->
-
-<section id="contact" class="contact section">
-
-    <div class="container contact-grid">
-
-        <div class="contact-info">
-
-            <p class="subtitle">CONTACT US</p>
-
-            <h2>We'd Love To Hear From You</h2>
-
-            <p>
-                Have a question, want to make a reservation,
-                or simply want to say hello? Contact us.
-            </p>
-
-
-            <div class="contact-item">
-
-                <span>📍</span>
-
-                <div>
-                    <h4>Address</h4>
-                    <p>Zumberseth Kunkulol Complex Near Pravara Highschool Kolhar Bk
-                        , Ahillyanagar</p>
-                </div>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <span>📞</span>
-
-                <div>
-                    <h4>Phone</h4>
-                    <p>+91 9175762613</p>
-                </div>
-
-            </div>
-
-
-            <div class="contact-item">
-
-                <span>✉️</span>
-
-                <div>
-                    <h4>Email</h4>
-                    <p>hello moreashish7576@gmail.com </p>
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="map-container">
-
-            <iframe
-                src="https://www.google.GGQQ+758, Unnamed Road, Kolhar Budruk, Maharashtra 413710
-                loading="lazy"
-                allowfullscreen>
-            </iframe>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= WHATSAPP ================= -->
-
-<a
-    href="https://wa.me/9175762613?text=Hello%20MA%20CAFE%2C%20I%20would%20like%20to%20make%20a%20reservation."
-    class="whatsapp"
-    target="_blank"
-    aria-label="Contact us on WhatsApp">
-
-    💬
-
-</a>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-    <div class="container footer-content">
-
-        <div>
-
-            <h3>♨️ MA CAFE</h3>
-
-            <p>
-                Fresh food. Great. Happy moments.
-            </p>
-
-        </div>
-
-
-        <div class="social-links">
-
-            <a href="#" aria-label="Facebook">Facebook</a>
-            <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="YouTube">YouTube</a>
-
-        </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        <p>
-            © 2026 MA Cafe. All Rights Reserved.
-        </p>
-
-    </div>
+    <p>
+        Thank you for ordering with us ❤️
+    </p>
 
 </footer>
 
 
-<script src="script.js"></script>
+<script>
 
-</body>
-</html>
+/* ==================================================
+   RESTAURANT SETTINGS
+   CHANGE THESE THREE VALUES
+================================================== */
+
+const RESTAURANT_NAME =
+    "MA Cafe Restaurant";
+
+
+const WHATSAPP_NUMBER =
+    "";
+
+
+const UPI_ID =
+    "7719852899@ybl";
+
+
+/* ==================================================
+   MENU
+================================================== */
+
+const menu = [
+
+    {
+        id: 1,
+        name: "Cold Coffee",
+        description:
+            "Rich espresso with steamed milk and creamy foam.",
+        price: 149,
+        image:
+            "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 2,
+        name: "Tea",
+        description:
+            "Traditional Indian tea with aromatic spices.",
+        price: 199,
+        image:
+            "https://images.unsplash.com/photo-1597318181409-cf64d0f5eb35?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 3,
+        name: "Veg Pizza",
+        description:
+            "Fresh vegetables, cheese and delicious pizza sauce.",
+        price: 199,
+        image:
+            "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 4,
+        name: "Veg Burger",
+        description:
+            "Crispy vegetable patty with fresh salad and sauce.",
+        price: ₹199,
+        image:
+            "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 5,
+        name: "French Fries",
+        description:
+            "Golden crispy fries served hot.",
+        price: ₹150,
+        image:
+            "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+    
+    },
+
+    {
+        id: 6,
+        name: "Veg Sandwich",
+        description:
+            "Fresh vegetables, cheese and toasted bread.",
+        price: ₹150,
+        image:
+            "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80"
+    },
+
+    {
+        id: 8,
+        name: "Chocolate Cake",
+        description:
+            "Soft chocolate cake with rich chocolate topping.",
+        price: ₹199,
+        image:
+            "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+    }
+
+];
+
+
+let cart = [];
+
+
+/* ==================================================
+   DISPLAY MENU
+================================================== */
+
+function displayMenu() {
+
+    const grid =
+        document.getElementById("menuGrid");
+
+    grid.innerHTML = "";
+
+    menu.forEach(item => {
+
+        grid.innerHTML += `
+
+            <div class="menu-card">
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}">
+
+                <div class="menu-content">
+
+                    <h3>
+                        ${item.name}
+                    </h3>
+
+                    <p>
+                        ${item.description}
+                    </p>
+
+                    <div class="price">
+                        ₹${item.price}
+                    </div>
+
+                    <button
+                        class="add-button"
+                        onclick="addToCart(${item.id})">
+
+                        + Add to Cart
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+}
+
+
+/* ==================================================
+   ADD TO CART
+================================================== */
+
+function addToCart(id) {
+
+    const item =
+        menu.find(product => product.id === id);
+
+    const existing =
+        cart.find(product => product.id === id);
+
+
+    if (existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+
+            ...item,
+
+            quantity: 1
+
+        });
+
+    }
+
+
+    updateCart();
+
+    showCart();
+
+}
+
+
+/* ==================================================
+   UPDATE CART
+================================================== */
+
+function updateCart() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    const cartCount =
+        document.getElementById("cartCount");
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+            `<div class="empty-cart">
+                Your cart is empty.
+             </div>`;
+
+        cartCount.textContent = "0";
+
+        updateTotals();
+
+        return;
+    }
+
+
+    let count = 0;
+
+    cartItems.innerHTML = "";
+
+
+    cart.forEach(item => {
+
+        count += item.quantity;
+
+
+        cartItems.innerHTML += `
+
+            <div class="cart-item">
+
+                <div>
+
+                    <strong>
+                        ${item.name}
+                    </strong>
+
+                    <div>
+                        ₹${item.price}
+                    </div>
+
+                </div>
+
+
+                <div class="qty-controls">
+
+                    <button
+                        onclick="changeQuantity(${item.id}, -1)">
+                        −
+                    </button>
+
+                    <strong>
+                        ${item.quantity}
+                    </strong>
+
+                    <button
+                        onclick="changeQuantity(${item.id}, 1)">
+                        +
+                    </button>
+
+                </div>
+
+
+                <strong>
+
+                    ₹${(
+                        item.price *
+                        item.quantity
+                    ).toFixed(2)}
+
+                </strong>
+
+
+                <button
+                    class="remove-button"
+                    onclick="removeItem(${item.id})">
+
+                    Remove
+
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    cartCount.textContent = count;
+
+    updateTotals();
+
+}
+
+
+/* ==================================================
+   CHANGE QUANTITY
+================================================== */
+
+function changeQuantity(id, change) {
+
+    const item =
+        cart.find(product => product.id === id);
+
+
+    if (!item) return;
+
+
+    item.quantity += change;
+
+
+    if (item.quantity <= 0) {
+
+        cart =
+            cart.filter(product =>
+                product.id !== id
+            );
+
+    }
+
+
+    updateCart();
+
+}
+
+
+/* ==================================================
+   REMOVE ITEM
+================================================== */
+
+function removeItem(id) {
+
+    cart =
+        cart.filter(item =>
+            item.id !== id
+        );
+
+    updateCart();
+
+}
+
+
+/* ==================================================
+   TOTALS
+================================================== */
+
+function calculateSubtotal() {
+
+    return cart.reduce(
+        (total, item) =>
+            total + (
+                item.price *
+                item.quantity
+            ),
+        0
+    );
+
+}
+
+
+function updateTotals() {
+
+    const subtotal =
+        calculateSubtotal();
+
+
+    const orderType =
+        document.getElementById("orderType")
+        .value;
+
+
+    const delivery =
+        orderType === "Delivery" &&
+        subtotal > 0
+            ? 40
+            : 0;
+
+
+    const total =
+        subtotal + delivery;
+
+
+    document.getElementById(
+        "subtotal"
+    ).textContent =
+        subtotal.toFixed(2);
+
+
+    document.getElementById(
+        "delivery"
+    ).textContent =
+        delivery.toFixed(2);
+
+
+    document.getElementById(
+        "grandTotal"
+    ).textContent =
+        total.toFixed(2);
+
+
+    document.getElementById(
+        "upiAmount"
+    ).textContent =
+        total.toFixed(2);
+
+}
+
+
+/* ==================================================
+   SHOW CART
+================================================== */
+
+function showCart() {
+
+    const section =
+        document.getElementById(
+            "cartSection"
+        );
+
+
+    section.style.display = "block";
+
+
+    section.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* ==================================================
+   VALIDATE CUSTOMER DETAILS
+================================================== */
+
+function validateCustomer() {
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
+
+    const address =
+        document.getElementById(
+            "customerAddress"
+        ).value.trim();
+
+
+    const orderType =
+        document.getElementById(
+            "orderType"
+        ).value;
+
+
+    if (cart.length === 0) {
+
+        alert(
+            "Please add items to your cart."
+        );
+
+        return false;
+
+    }
+
+
+    if (!name) {
+
+        alert(
+            "Please enter your name."
+        );
+
+        return false;
+
+    }
+
+
+    if (!/^[0-9]{10}$/.test(phone)) {
+
+        alert(
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return false;
+
+    }
+
+
+    if (
+        orderType === "Delivery" &&
+        !address
+    ) {
+
+        alert(
+            "Please enter your delivery address."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* ==================================================
+   UPI PAYMENT
+================================================== */
+
+function payWithUPI() {
+
+    if (!validateCustomer()) {
+        return;
+    }
+
+
+    const total =
+        calculateSubtotal() +
+        (
+            document.getElementById(
+                "orderType"
+            ).value === "Delivery"
+                ? 40
+                : 0
+        );
+
+
+    const transactionNote =
+        encodeURIComponent(
+            RESTAURANT_NAME +
+            " Food Order"
+        );
+
+
+    const upiURL =
+        "upi://pay" +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+        "&pn=" +
+        encodeURIComponent(RESTAURANT_NAME) +
+        "&am=" +
+        total.toFixed(2) +
+        "&cu=INR" +
+        "&tn=" +
+        transactionNote;
+
+
+    window.location.href = upiURL;
+
+}
+
+
+/* ==================================================
+   WHATSAPP ORDER
+================================================== */
+
+function sendWhatsAppOrder() {
+
+    if (!validateCustomer()) {
+        return;
+    }
+
+
+    const name =
+        document.getElementById(
+       
